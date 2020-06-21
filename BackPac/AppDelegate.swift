@@ -29,14 +29,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
-// networkmanager 정리  -- 00
-// 셀 변수명 정리          -- 00
-// reducer , reactor 생성 연결  -- 00
-// crud 처리 연결.    -- 00
-// InterActor 생성.  -- 해야하나??? 흠....
-
-
-// main color 정리
-// large title text.   - 00
-// 
