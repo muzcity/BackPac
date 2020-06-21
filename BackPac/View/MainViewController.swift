@@ -74,9 +74,11 @@ extension MainViewController {
             switch status {
             case .request:
                 self.title = self.reducer.searchKeyword
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
             case .responded:
-                self.table.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             case .respondedError:
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 ShowAlert(self, title: "Error", message: "에러가 발생했습니다. 잠시후에 다시 시도해주세요.", cancelTitle: nil, cancelHandler: nil, okHandler: nil)
             case .update:
                 self.table.reloadData()

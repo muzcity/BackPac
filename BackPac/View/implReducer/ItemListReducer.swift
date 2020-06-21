@@ -33,6 +33,12 @@ class ItemListReducer : Reducer {
     var searchKeyword:String {
         return keyword
     }
+    
+    override var model: ReducerDataModelProtocol? {
+        didSet {
+            status.accept(.update)
+        }
+    }
 }
 
 extension ItemListReducer {
@@ -56,9 +62,9 @@ extension ItemListReducer {
                     self.status.accept(.respondedError)
                     return
                 }
-                
-                self.model = mo
+
                 self.status.accept(.responded)
+                self.model = mo
 
             case .failure(_) :
                 // error message 노출.
