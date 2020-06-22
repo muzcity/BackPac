@@ -1,14 +1,14 @@
 //
-//  UITableViewCell.swift
+//  UICollectionViewCell.swift
 //  BackPac
 //
-//  Created by roy2020 on 2020/06/20.
+//  Created by roy2020 on 2020/06/22.
 //  Copyright © 2020 muzcity. All rights reserved.
 //
 
 import UIKit
 
-extension UITableViewCell {
+extension UICollectionViewCell {
     
     public static func cellName() -> String {
         
@@ -17,8 +17,7 @@ extension UITableViewCell {
             return cellName
         }
         
-        return "UITableViewCell"
+        return "UICollectionViewCell"
     }
     
 }
-

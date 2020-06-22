@@ -100,9 +100,9 @@ extension MainTableViewCell {
         
         let card = UIView(frame: .zero)
         card.backgroundColor = .white
-        card.borderWidth = 1
-        card.cornerRadius = 4
-        card.borderColor = UIColor.gray.cgColor
+        card.borderW = 1
+        card.cornerR = 4
+        card.borderColor = UIColor.lightgray1.cgColor
         card.clipsToBounds = true
         
         self.contentView.addSubview(card)
@@ -159,11 +159,13 @@ extension MainTableViewCell {
         
         let primary = UILabel(frame:.zero)
         primary.font = UIFont.boldSystemFont(ofSize: 16)
+        primary.textColor = .gray5
         primary.numberOfLines = 1
         appNameLabel = primary
         
         let secondary = UILabel(frame: .zero)
         secondary.font = UIFont.systemFont(ofSize: 12)
+        secondary.textColor = .gray2
         secondary.numberOfLines = 1
         sellerLabel = secondary
         
@@ -191,7 +193,8 @@ extension MainTableViewCell {
         let line = UIView.line()
         
         let primary = UILabel(frame:.zero)
-        primary.font = UIFont.boldSystemFont(ofSize: 16)
+        primary.font = UIFont.boldSystemFont(ofSize: 12)
+        primary.textColor = .gray5
         primary.numberOfLines = 1
         primaryCategory = primary
         
@@ -206,6 +209,7 @@ extension MainTableViewCell {
         
         let secondary = UILabel(frame: .zero)
         secondary.font = UIFont.systemFont(ofSize: 12)
+        secondary.textColor = .gray5
         secondary.numberOfLines = 1
         formattedPrice = secondary
         
@@ -223,7 +227,7 @@ extension MainTableViewCell {
         let l1HConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[primary]-8-[rating(100)]-8-|", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["primary":primary,"rating":rating])
         let l2HConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[secondary]-8-|", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["secondary":secondary])
         
-        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[line(1)]-4-[primary]-4-[secondary]", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["line":line, "primary":primary, "secondary":secondary])
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[line(1)]-8-[primary]-4-[secondary]", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["line":line, "primary":primary, "secondary":secondary])
         
         let ratingCenterYConstraint = NSLayoutConstraint(item: primary, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: rating, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
         let ratingHeightConstraint = NSLayoutConstraint(item: rating, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 20)

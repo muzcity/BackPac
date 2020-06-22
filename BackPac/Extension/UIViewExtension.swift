@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    var cornerRadius : CGFloat {
+    var cornerR : CGFloat {
         get {
             return self.layer.cornerRadius
         }
@@ -20,7 +20,7 @@ extension UIView {
         }
     }
     
-    var borderWidth : CGFloat {
+    var borderW : CGFloat {
         get {
             return self.layer.borderWidth
         }
@@ -52,12 +52,33 @@ extension UIView {
         self.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: 0).isActive = true
         self.topAnchor.constraint(equalTo: superView.topAnchor, constant: 0).isActive = true
         self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    public func fillHorizontalLayout(margin : CGFloat = 0) {
+        guard let superView = self.superview else {
+            return
+        }
         
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.leftAnchor.constraint(equalTo: superView.leftAnchor, constant: margin).isActive = true
+        self.rightAnchor.constraint(equalTo: superView.rightAnchor, constant: -margin).isActive = true
+    }
+    
+    public func fillVerticalLayout(margin : CGFloat = 0) {
+        guard let superView = self.superview else {
+            return
+        }
+        
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.topAnchor.constraint(equalTo: superView.topAnchor, constant: margin).isActive = true
+        self.bottomAnchor.constraint(equalTo: superView.bottomAnchor, constant: -margin).isActive = true
     }
     
     static func line() -> UIView {
         let v = UIView(frame:.zero)
-        v.backgroundColor = UIColor.lightGray
+        v.backgroundColor = UIColor.lightgray1
         return v
     }
 }

@@ -12,7 +12,7 @@ import Foundation
 //MARK: -
 //MARK: - ViewModel
 
-class ItemViewModel {
+class ItemViewModel : ReducerDataModelProtocol {
     
     init(model : ItemModel?) {
         models = model?.results.map { ItemDetailViewModel(model:$0) }
@@ -42,7 +42,7 @@ class ItemViewModel {
 }
 
 
-class ItemDetailViewModel {
+class ItemDetailViewModel : ReducerDataModelProtocol {
     
     var model : ItemDetailModel?
     init(model : ItemDetailModel) {
@@ -77,7 +77,7 @@ class ItemDetailViewModel {
     var primaryGenreId: Int                                 { return model?.primaryGenreId ?? 0 }
     var primaryGenreName: String                            { return model?.primaryGenreName ?? "" }
     var releaseDate: String                                 { return model?.releaseDate ?? "" }
-    var releaseNotes: String?                               { return model?.releaseNotes ?? "" }
+    var releaseNotes: String                                { return model?.releaseNotes ?? "" }
     var screenshotUrls: [String]                            { return model?.screenshotUrls ?? [] }
     var sellerName: String                                  { return model?.sellerName ?? "" }
     var supportedDevices: [String]                          { return model?.supportedDevices ?? [] }

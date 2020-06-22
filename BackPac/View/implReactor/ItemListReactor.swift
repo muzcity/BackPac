@@ -27,6 +27,8 @@ extension ItemListReactor {
     
     func clickItem(at index: Int) {
         let vc = DetailViewController(nibName: nil, bundle: nil)
+        let vm = reducer?.viewModel()?.object(at: index)
+        vc.reducer = ItemDetailReducer(viewModel: vm)
         ownerViewController?.navigationController?.pushViewController(vc, animated: true)
     }
     

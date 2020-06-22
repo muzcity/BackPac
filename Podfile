@@ -11,4 +11,5 @@ target 'BackPac' do
   pod 'RxCocoa'
   pod 'Kingfisher'
   pod 'SwiftyStarRatingView'
+  pod 'TagListView', '~> 1.0'
 end

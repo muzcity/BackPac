@@ -22,6 +22,7 @@ class MainViewController: UIViewController {
     
     private var table : UITableView! = {
         let tb = UITableView(frame: .zero)
+        tb.separatorStyle = .none
         return tb
     }()
         
