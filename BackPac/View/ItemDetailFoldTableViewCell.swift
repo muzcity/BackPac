@@ -57,7 +57,7 @@ class ItemDetailFoldTableViewCell: UITableViewCell {
     private var isFold : Bool = true {
         didSet {
             
-            stack.arrangedSubviews[2].isHidden = isFold
+            stack.arrangedSubviews[1].isHidden = isFold
             
             if isFold {
                 arrowButton.setImage(UIImage(named: "item_detail_arrow_down"), for: .normal)
@@ -90,9 +90,6 @@ extension ItemDetailFoldTableViewCell {
 extension ItemDetailFoldTableViewCell {
     private func createViews() {
 
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.fillLayout()
-
         selectionStyle = .none
 
         let stackView = UIStackView(frame: .zero)
@@ -106,44 +103,25 @@ extension ItemDetailFoldTableViewCell {
         contentView.addSubview(stack)
 
         stackView.fillLayout()
+        stackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.size.width).isActive = true
 
         let view = UIView(frame: .zero)
 
-
-        let line = UIView.line()
-
         let notesView = UIView(frame: .zero)
-        notesView.backgroundColor = .lightgray2
-
-        let label3 = UILabel(frame: .zero)
-        label3.font = UIFont.systemFont(ofSize: 14)
-        label3.textColor = .gray3
-        label3.backgroundColor = .clear
-        label3.numberOfLines = 0
-        releaseNotesLabel = label3
-
-        notesView.addSubview(label3)
-        label3.fillHorizontalLayout(margin: 8)
-        label3.fillVerticalLayout(margin: 8)
-
+        notesView.backgroundColor = .white
 
         stack.addArrangedSubview(view)
-        stack.addArrangedSubview(line)
         stack.addArrangedSubview(notesView)
 
-
         view.translatesAutoresizingMaskIntoConstraints = false
-        line.translatesAutoresizingMaskIntoConstraints = false
         notesView.translatesAutoresizingMaskIntoConstraints = false
-
+        
         view.fillHorizontalLayout()
-        view.heightAnchor.constraint(equalToConstant: 43).isActive = true
-        line.fillHorizontalLayout(margin: 8)
-        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        notesView.fillHorizontalLayout(margin: 8)
+        view.heightAnchor.constraint(equalToConstant: ItemDetailFoldTableViewCell.CELL_HEIGHT).isActive = true
+        notesView.fillHorizontalLayout()
 
         createInfoView(view)
-
+        createFoldView(notesView)
     }
 
     private func createInfoView(_ parentView : UIView) {
@@ -158,6 +136,8 @@ extension ItemDetailFoldTableViewCell {
 
         button.setImage(UIImage(named: "item_detail_arrow_down"), for: .normal)
 
+        let line = UIView.line()
+        
         primaryLabel = left
         secondaryLabel = right
         arrowButton = button
@@ -166,10 +146,15 @@ extension ItemDetailFoldTableViewCell {
         parentView.addSubview(left)
         parentView.addSubview(secondaryLabel)
         parentView.addSubview(arrowButton)
+        parentView.addSubview(line)
 
+        
         left.fillVerticalLayout()
         right.fillVerticalLayout()
         button.fillVerticalLayout()
+        line.fillHorizontalLayout(margin: 8)
+        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        line.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: 0).isActive = true
 
         parentView.addConstraints(
             NSLayoutConstraint.constraints(withVisualFormat: "H:|-8-[left(right)][right][button(30)]-8-|", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["left":left,"right":right,"button":button])
@@ -179,5 +164,29 @@ extension ItemDetailFoldTableViewCell {
             self?.clickHandler?()
         }).disposed(by: disposeBag)
 
+    }
+    
+    private func createFoldView(_ parentView : UIView) {
+        let backView = UIView(frame: .zero)
+        backView.backgroundColor = .lightgray2
+        parentView.addSubview(backView)
+        
+        backView.fillHorizontalLayout(margin: 8)
+        backView.fillVerticalLayout()
+        
+        let label3 = UILabel(frame: .zero)
+        label3.font = UIFont.systemFont(ofSize: 14)
+        label3.textColor = .gray3
+        label3.backgroundColor = .clear
+        label3.numberOfLines = 0
+        releaseNotesLabel = label3
+
+        backView.addSubview(label3)
+        label3.fillHorizontalLayout(margin: 8)
+        
+        backView.addConstraints(
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|-8@750-[label3]-8@750-|", options: NSLayoutConstraint.FormatOptions.init(rawValue: 0), metrics: nil, views: ["label3":label3])
+        )
+        
     }
 }
