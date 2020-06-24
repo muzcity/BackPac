@@ -184,7 +184,7 @@ extension DetailViewController : UITableViewDataSource, UITableViewDelegate {
         
         if let subTitleCell = cell as? ItemDetailSubTitleTableViewCell {
             if indexPath.compare(0, 2) {
-                subTitleCell.setCell(title: "크기", subTitle: vm.fileSizeBytes)
+                subTitleCell.setCell(title: "크기", subTitle: Util.prettyPrinted(of:  vm.fileSizeBytes) )
             }
             if indexPath.compare(0, 3) {
                 subTitleCell.setCell(title: "연령", subTitle: vm.contentAdvisoryRating)

@@ -47,3 +47,21 @@ func ShowAlert(_ parentViewController:UIViewController,
     
 }
 
+
+
+
+class Util {
+    
+    /// 파일크기를 kb, mb, gb, tb 표시기능한다.
+    /// - Parameter size: 숫자로만 된 스트링
+    static func prettyPrinted(of size: String) -> String {
+        guard let num = Int(size) else {
+            return size
+        }
+        
+        let fileSize = ByteCountFormatter().string(for: num) ?? size
+        return fileSize
+    }
+    
+    
+}
