@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// 리스트 화면에서의 유저의 리액션을 담당하는 클래스
 class ItemListReactor {
     
     init(reducer:Reducer, targetViewController:UIViewController) {

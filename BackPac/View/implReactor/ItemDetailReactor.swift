@@ -8,7 +8,7 @@
 
 import UIKit
 
-
+/// 상세 화면에서의 유저의 리액션을 담당하는 클래스
 class ItemDetailReactor {
     
     init(reducer:Reducer, targetViewController:UIViewController) {

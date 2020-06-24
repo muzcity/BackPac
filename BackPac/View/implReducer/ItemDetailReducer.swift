@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// reducer 구현체 vm모델과 리스트 화면의 상태값들을 관리한다
 class ItemDetailReducer : Reducer {
     
     init(viewModel : ItemDetailViewModel?) {

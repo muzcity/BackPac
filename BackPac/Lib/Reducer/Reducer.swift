@@ -28,6 +28,7 @@ extension ReducerBaseProtocol {
 
 
 
+/// status를 이용한 뷰의 업데이트 상태값을 관리
 class Reducer : ReducerBaseProtocol {
     
     var status: BehaviorRelay<ViewStoreState> = BehaviorRelay.init(value: .create)

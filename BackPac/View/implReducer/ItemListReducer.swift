@@ -10,15 +10,11 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+/// reducer 구현체 vm모델과 리스트 화면의 상태값들을 관리한다
 class ItemListReducer : Reducer {
     
     func viewModel() -> ItemViewModel? {
-        guard let mo = model as? ItemModel else {
-            return nil
-        }
-        
-        let vmo = ItemViewModel(model: mo)
-        return vmo
+        return model as? ItemViewModel
     }
     
     init(keyword : String) {
@@ -64,7 +60,7 @@ extension ItemListReducer {
                 }
 
                 self.status.accept(.responded)
-                self.model = mo
+                self.model = ItemViewModel(model: mo)
 
             case .failure(_) :
                 // error message 노출.

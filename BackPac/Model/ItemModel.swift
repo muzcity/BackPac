@@ -99,13 +99,13 @@ class ItemDetailViewModel : ReducerDataModelProtocol {
 //MARK: -
 //MARK: - Model
 
-struct ItemModel: Codable , ReducerDataModelProtocol {
+struct ItemModel: Codable {
     let results: [ItemDetailModel]
 
     let resultCount: Int
 }
 
-struct ItemDetailModel: Codable , ReducerDataModelProtocol {
+struct ItemDetailModel: Codable {
 
     let artistId: Int
     let artistName: String

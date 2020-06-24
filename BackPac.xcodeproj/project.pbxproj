@@ -105,6 +105,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B0147A0924A2F9D200673A36 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				B053FEF4249E1C8400FB6E19 /* MainTableViewCell.swift */,
+				B053FF0A249F492B00FB6E19 /* ItemDetailScreenShotTableViewCell.swift */,
+				B053FF0C249F558100FB6E19 /* ItemDetailInfoTableViewCell.swift */,
+				B053FF10249F627F00FB6E19 /* ItemDetailSubTitleTableViewCell.swift */,
+				B053FF1624A07B7D00FB6E19 /* ItemDetailFoldTableViewCell.swift */,
+				B053FF1824A07BD800FB6E19 /* ItemDetailDescriptionTableViewCell.swift */,
+				B053FF1A24A080F400FB6E19 /* ItemDetailTagTableViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		B053FEEA249DF85600FB6E19 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,17 +207,11 @@
 		B08BB390249DF26800944A38 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B0147A0924A2F9D200673A36 /* cells */,
 				B053FF03249F38FC00FB6E19 /* implReactor */,
 				B053FF02249F38C500FB6E19 /* implReducer */,
 				B08BB392249DF29A00944A38 /* MainViewController.swift */,
 				B08BB394249DF2A400944A38 /* DetailViewController.swift */,
-				B053FEF4249E1C8400FB6E19 /* MainTableViewCell.swift */,
-				B053FF0A249F492B00FB6E19 /* ItemDetailScreenShotTableViewCell.swift */,
-				B053FF0C249F558100FB6E19 /* ItemDetailInfoTableViewCell.swift */,
-				B053FF10249F627F00FB6E19 /* ItemDetailSubTitleTableViewCell.swift */,
-				B053FF1624A07B7D00FB6E19 /* ItemDetailFoldTableViewCell.swift */,
-				B053FF1824A07BD800FB6E19 /* ItemDetailDescriptionTableViewCell.swift */,
-				B053FF1A24A080F400FB6E19 /* ItemDetailTagTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
