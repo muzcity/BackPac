@@ -36,9 +36,11 @@ class ItemDetailScreenShotTableViewCell: UITableViewCell {
     }
     
     private var collection : UICollectionView!
+    private var collectionViewFlowLayout : UICollectionViewFlowLayout!
 
     private var urlList : [String] = [] {
         didSet {
+            collectionViewFlowLayout.itemSize = collectionItemSize(urlList.first ?? "")
             collection.reloadData()
         }
     }
@@ -58,6 +60,34 @@ extension ItemDetailScreenShotTableViewCell {
 }
 
 extension ItemDetailScreenShotTableViewCell {
+    
+    private func collectionItemSize(_ urlString : String) -> CGSize {
+        let path = try? urlString.asURL().lastPathComponent
+        let defaultSize = CGSize(width: ItemDetailScreenShotTableViewCell.IMAGE_WIDTH, height: ItemDetailScreenShotTableViewCell.IMAGE_HEIGHT)
+        
+        guard let fileName = path else {
+            return defaultSize
+        }
+        
+        let sepa = fileName.components(separatedBy: "bb.")
+        guard sepa.count == 2 else {
+            return defaultSize
+        }
+        
+        let value = sepa[0].components(separatedBy: "x")
+        let widthFileName = Int(value.first ?? "")
+        guard let width = widthFileName else {
+            return defaultSize
+        }
+        let heightFileName = Int(value.last ?? "")
+        guard let height = heightFileName else {
+            return defaultSize
+        }
+        
+        let contentWidth = width * Int(ItemDetailScreenShotTableViewCell.IMAGE_HEIGHT) / height
+        return CGSize(width: CGFloat(contentWidth), height: ItemDetailScreenShotTableViewCell.IMAGE_HEIGHT)
+    }
+    
     private func createViews() {
         
         selectionStyle = .none
@@ -68,6 +98,7 @@ extension ItemDetailScreenShotTableViewCell {
         flowLayout.minimumLineSpacing = ItemDetailScreenShotTableViewCell.CELL_SPACING
         flowLayout.minimumInteritemSpacing = ItemDetailScreenShotTableViewCell.CELL_SPACING
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: ItemDetailScreenShotTableViewCell.CELL_MARGIN, bottom: 0, right: ItemDetailScreenShotTableViewCell.CELL_MARGIN)
+        collectionViewFlowLayout = flowLayout
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.register(ItemDetailScreenShotCollectionViewCell.self, forCellWithReuseIdentifier: ItemDetailScreenShotCollectionViewCell.cellName())
